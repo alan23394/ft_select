@@ -6,7 +6,7 @@
 #    By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/05 13:42:22 by alan              #+#    #+#              #
-#    Updated: 2019/07/27 08:36:44 by abarnett         ###   ########.fr        #
+#    Updated: 2019/07/27 10:01:28 by abarnett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,12 +23,15 @@ DEPFLAGS +=		-MMD -MT $@
 MAKE_LIBRARY :=	make -C $(LIB_DIR) -f $(LIB_MAKEFILE) --no-print-directory
 LIB :=			$(LIB_DIR)/$(LIB_NAME)
 
-.PHONY:			all clean fclean re install
+.PHONY:			all debug clean fclean re install
 
 all: tags $(NAME)
 
 tags: $(C_SRCS) $(LIB_SRCS)
 	@- ctags -R
+
+debug: all
+CFLAGS += -DDEBUG
 
 $(LIB): $(LIB_SRCS)
 	@ $(MAKE_LIBRARY)
