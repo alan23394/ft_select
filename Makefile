@@ -6,7 +6,7 @@
 #    By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/05 13:42:22 by alan              #+#    #+#              #
-#    Updated: 2019/07/27 10:01:28 by abarnett         ###   ########.fr        #
+#    Updated: 2019/07/28 07:18:58 by abarnett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,8 +30,8 @@ all: tags $(NAME)
 tags: $(C_SRCS) $(LIB_SRCS)
 	@- ctags -R
 
+debug: CFLAGS += -DDEBUG
 debug: all
-CFLAGS += -DDEBUG
 
 $(LIB): $(LIB_SRCS)
 	@ $(MAKE_LIBRARY)
