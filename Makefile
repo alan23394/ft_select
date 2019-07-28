@@ -17,7 +17,7 @@ include config.mk
 
 C_SRCS :=		$(wildcard $(SRC_DIR)/*.c)
 C_OBJS :=		$(patsubst %.c,%.o,$(C_SRCS))
-DEPENDS :=		$(patsubst %.c,%.d,$(C_SRCS))
+C_DEPS :=		$(patsubst %.c,%.d,$(C_SRCS))
 DEPFLAGS +=		-MMD -MT $@
 
 MAKE_LIBRARY :=	make -C $(LIB_DIR) -f $(LIB_MAKEFILE) --no-print-directory
@@ -42,15 +42,19 @@ $(NAME): $(LIB) $(C_OBJS)
 %.o: %.c Makefile
 	$(CC) $(CFLAGS) $(DEPFLAGS) -c $< -o $@
 
--include $(DEPENDS)
+-include $(C_DEPS)
 
 clean:
+	@- $(RM) $(C_OBJS) $(C_DEPS)
+
+lclean:
 	@- $(MAKE_LIBRARY) clean
-	@- $(RM) $(C_OBJS) $(DEPENDS)
 
 fclean: clean
-	@- $(MAKE_LIBRARY) fclean
 	@- $(RM) $(NAME)
+
+lfclean:
+	@- $(MAKE_LIBRARY) fclean
 
 re: fclean all
 
