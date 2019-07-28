@@ -11,30 +11,27 @@
 /* ************************************************************************** */
 
 #include "debug.h"
+#include "error.h"
 #include "terminal.h"
 #include "ft_select.h"
 #include "ft_printf.h"
 #include <termios.h>
 #include <unistd.h>
 
-/*
-** TODO: error codes
-*/
-
 int		main(int argc, char **argv)
 {
-	int				err;
+	enum e_err_code	err;
 	const char		*selected;
 
 	if (!isatty(STDIN_FILENO))
 	{
-		ft_printfd(STDERR_FILENO, "ft_select: Not a terminal.\n");
-		return (EXIT_FAILURE);
+		return (print_error(E_NOTATTY));
 	}
 	print_debug("Setting up terminal");
-	err = terminal_setup();
-	if (err != 0)
+	if ((err = terminal_setup()) != 0)
+	{
 		select_exit(err);
+	}
 	print_debug("Selecting");
 	selected = select(argc - 1, argv + 1);
 	ft_putstr(selected);
