@@ -33,8 +33,8 @@ int		main(int argc, char **argv)
 		select_exit(err);
 	}
 	print_debug("Selecting");
-	selected = select(argc - 1, argv + 1);
-	ft_putstr(selected);
+	selected = ft_select(argc - 1, argv + 1);
+	ft_printf("%s\n", selected);
 	print_debug("Resetting and quitting");
 	select_exit(0);
 }
