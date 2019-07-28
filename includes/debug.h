@@ -6,13 +6,13 @@
 /*   By: abarnett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/27 09:11:45 by abarnett          #+#    #+#             */
-/*   Updated: 2019/07/27 09:57:59 by abarnett         ###   ########.fr       */
+/*   Updated: 2019/07/28 03:09:41 by abarnett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEBUG_H
 # define DEBUG_H
 
-void	print_debug(char *string);
+void	print_debug(const char *string);
 
 #endif

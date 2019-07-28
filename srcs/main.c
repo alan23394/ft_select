@@ -6,7 +6,7 @@
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 00:10:33 by alan              #+#    #+#             */
-/*   Updated: 2019/07/27 09:27:42 by abarnett         ###   ########.fr       */
+/*   Updated: 2019/07/28 03:11:27 by abarnett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 
 int		main(int argc, char **argv)
 {
-	int		err;
-	char	*selected;
+	int				err;
+	const char		*selected;
 
 	if (!isatty(STDIN_FILENO))
 	{
