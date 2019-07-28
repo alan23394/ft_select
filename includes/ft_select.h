@@ -13,7 +13,9 @@
 #ifndef FT_SELECT_H
 # define FT_SELECT_H
 
+# include "error.h"
+
 const char	*ft_select(int num_args, char **args);
-void		select_exit(int code);
+void		select_exit(enum e_err_code error_code);
 
 #endif
