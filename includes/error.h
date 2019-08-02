@@ -6,7 +6,7 @@
 /*   By: abarnett <alanbarnett328@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/28 02:07:38 by abarnett          #+#    #+#             */
-/*   Updated: 2019/07/28 07:42:47 by abarnett         ###   ########.fr       */
+/*   Updated: 2019/09/04 14:28:30 by abarnett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ enum	e_err_code
 {
 	E_NOARGS = 1,
 	E_NOTATTY,
-	E_TCGETAT_FAIL,
-	E_TCSETAT_FAIL,
+	E_TSAVE_FAIL,
+	E_TNONCANON_FAIL,
+	E_TRESTORE_FAIL,
 	ERROR_MESSAGE_COUNT,
 };
 
