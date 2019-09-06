@@ -24,25 +24,36 @@
 */
 static struct s_my_term	g_term;
 
+/*
+** If you pass in a terminal struct, it will set the internal static variable.
+** If you pass in NULL, it will return the internal struct.
+*/
+/*
+struct s_my_term	terminal_store(struct s_my_term terminal)
+{
+
+}
+*/
+
 enum e_err_code	terminal_setup(void)
 {
 	if (tcgetattr(STDIN_FILENO, &g_term.old_term) != 0)
 	{
-		print_debug("tcgetattr failed");
+		PRINT_DEBUG("tcgetattr failed");
 		return (E_TSAVE_FAIL);
 	}
-	print_debug("Saved old terminal attributes");
+	PRINT_DEBUG("Saved old terminal attributes");
 	ft_memcpy(&g_term.new_term, &g_term.old_term, sizeof(struct termios));
-	print_debug("Copied old terminal attributes to a new struct");
+	PRINT_DEBUG("Copied old terminal attributes to a new struct");
 	g_term.new_term.c_lflag &= ~(ICANON|ECHO);
 	g_term.new_term.c_cc[VMIN] = 1;
 	g_term.new_term.c_cc[VTIME] = 0;
 	if (tcsetattr(STDIN_FILENO, TCSAFLUSH, &g_term.new_term) != 0)
 	{
-		print_debug("tcsetattr failed");
+		PRINT_DEBUG("tcsetattr failed");
 		return (E_TNONCANON_FAIL);
 	}
-	print_debug("Enabled non-canonical mode");
+	PRINT_DEBUG("Enabled non-canonical mode");
 	return (0);
 }
 
@@ -50,9 +61,9 @@ enum e_err_code	terminal_restore(void)
 {
 	if (tcsetattr(STDIN_FILENO, TCSANOW, &g_term.old_term) != 0)
 	{
-		print_debug("tcsetattr failed");
+		PRINT_DEBUG("tcsetattr failed");
 		return (E_TRESTORE_FAIL);
 	}
-	print_debug("Restored previous terminal state successfully");
+	PRINT_DEBUG("Restored previous terminal state successfully");
 	return (0);
 }
