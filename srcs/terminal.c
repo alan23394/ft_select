@@ -6,12 +6,13 @@
 /*   By: abarnett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/27 08:18:10 by abarnett          #+#    #+#             */
-/*   Updated: 2019/07/28 03:12:52 by abarnett         ###   ########.fr       */
+/*   Updated: 2019/09/05 19:27:36 by abarnett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "debug.h"
 #include "error.h"
+#include "ft_mem.h"
 #include "terminal.h"
 #include <termios.h>
 #include <unistd.h>
@@ -25,13 +26,9 @@ enum e_err_code	terminal_setup(void)
 		print_debug("Failed to save old terminal attributes");
 		return (E_TCGETAT_FAIL);
 	}
-	print_debug("Saved old attributes");
-	if (tcgetattr(STDIN_FILENO, &g_term.new_term) != 0)
-	{
-		print_debug("Failed to save new terminal attributes");
-		return (E_TCGETAT_FAIL);
-	}
-	print_debug("Saved new attributes");
+	print_debug("Saved old terminal attributes");
+	ft_memcpy(&g_term.new_term, &g_term.old_term, sizeof(struct termios));
+	print_debug("Copied old terminal attributes to a new struct");
 	g_term.new_term.c_lflag &= ~(ICANON|ECHO);
 	g_term.new_term.c_cc[VMIN] = 1;
 	g_term.new_term.c_cc[VTIME] = 0;
