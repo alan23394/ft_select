@@ -6,7 +6,7 @@
 /*   By: abarnett <alanbarnett328@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/28 02:07:42 by abarnett          #+#    #+#             */
-/*   Updated: 2019/08/29 21:52:28 by abarnett         ###   ########.fr       */
+/*   Updated: 2019/10/06 04:24:14 by abarnett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ const char	*get_error_string(enum e_err_code error_code)
 	static const char	*error_strings[ERROR_MESSAGE_COUNT] = {
 		0,
 		"Needs arguments",
+		"No terminal entry in the terminfo database",
 		"Must be run in an interactive terminal",
 		"Could not save current terminal state",
 		"Could not enable non-canonical mode",
