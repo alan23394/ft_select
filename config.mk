@@ -6,7 +6,7 @@
 #    By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/05 13:42:52 by alan              #+#    #+#              #
-#    Updated: 2019/10/03 01:56:46 by abarnett         ###   ########.fr        #
+#    Updated: 2019/10/20 01:17:13 by alan             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,5 +25,5 @@ INCLUDE_DIRS :=	./includes $(LIB_DIR)/includes
 
 # Compiling
 CC :=			gcc
-CFLAGS +=		-g -Wall -Wextra -Werror $(foreach INC, $(INCLUDE_DIRS), -I$(INC))
+CFLAGS +=		-Wall -Wextra -Werror $(foreach INC, $(INCLUDE_DIRS), -I$(INC))
 LDFLAGS +=		-L$(LIB_DIR) -l$(LIBRARY) -lcurses
