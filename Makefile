@@ -6,7 +6,7 @@
 #    By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/05 13:42:22 by alan              #+#    #+#              #
-#    Updated: 2019/07/28 07:18:58 by abarnett         ###   ########.fr        #
+#    Updated: 2019/11/01 06:53:49 by alan             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,8 @@
 include config.mk
 
 C_SRCS :=		$(wildcard $(SRC_DIR)/*.c)
+C_SRCS +=		$(wildcard $(SRC_DIR)/select_string/*.c)
+C_SRCS +=		$(wildcard $(SRC_DIR)/select_keys/*.c)
 C_OBJS :=		$(patsubst %.c,%.o,$(C_SRCS))
 C_DEPS :=		$(patsubst %.c,%.d,$(C_SRCS))
 DEPFLAGS +=		-MMD -MT $@
@@ -30,7 +32,7 @@ all: tags $(NAME)
 tags: $(C_SRCS) $(LIB_SRCS)
 	@- ctags -R
 
-debug: CFLAGS += -DDEBUG
+debug: CFLAGS += -DDEBUG -g
 debug: all
 
 $(LIB): $(LIB_SRCS)
