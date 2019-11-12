@@ -6,7 +6,7 @@
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 01:42:13 by alan              #+#    #+#             */
-/*   Updated: 2019/10/26 23:52:13 by alan             ###   ########.fr       */
+/*   Updated: 2019/11/07 07:56:53 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@
 struct s_select_string
 {
 	const char		*str;
-	int				str_len;
-	int				str_index;
-	int				selected;
+	unsigned int	str_len;
+	unsigned int	str_index;
+	unsigned char	selected;
 	struct s_point	pos;
 };
 
