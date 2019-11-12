@@ -6,7 +6,7 @@
 /*   By: abarnett <alanbarnett328@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/28 02:07:42 by abarnett          #+#    #+#             */
-/*   Updated: 2019/10/06 04:24:14 by abarnett         ###   ########.fr       */
+/*   Updated: 2019/11/09 03:15:50 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 ** must be less than that number).
 */
 
-const char	*get_error_string(enum e_err_code error_code)
+static const char	*get_error_string(enum e_err_code error_code)
 {
 	static const char	*error_strings[ERROR_MESSAGE_COUNT] = {
 		0,
@@ -40,7 +40,7 @@ const char	*get_error_string(enum e_err_code error_code)
 			? (error_strings[error_code]) : 0);
 }
 
-int			print_error(enum e_err_code error_code)
+int					print_error(enum e_err_code error_code)
 {
 	const char	*error_string;
 
