@@ -6,7 +6,7 @@
 /*   By: abarnett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/27 08:09:56 by abarnett          #+#    #+#             */
-/*   Updated: 2019/10/28 16:36:03 by alan             ###   ########.fr       */
+/*   Updated: 2019/11/08 18:47:52 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,38 +14,6 @@
 # define FT_SELECT_H
 
 # include "error.h"
-# include "point.h"
-
-# define DEFAULT_PADDING 4
-
-/*
-** combine selected strings into output string
-**
-** select struct
-** iterator list of strings
-** stack of deleted strings
-** string for final output
-** overall widest string
-** word trimming length
-** number of string columns
-** s_point for window size
-**	lines in terminal
-**	columns in terminal
-*/
-
-struct s_select
-{
-	struct s_iter	*strings;
-//	struct s_stack	*deleted;
-	const char		*output;
-	unsigned int	str_maxlen;
-	unsigned int	str_wraplen;
-	unsigned int	str_padding;
-	unsigned int	sel_columns;
-	struct s_point	term_size;
-};
-
-void			select_info_init(struct s_select *select_info);
 
 int				setup_screen(void);
 int				restore_screen(void);

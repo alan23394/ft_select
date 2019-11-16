@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_select.h"
+#include "select_info.h"
 #include "select_string.h"
 #include "ft_dnode.h"
 #include "ft_iter.h"

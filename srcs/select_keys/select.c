@@ -6,15 +6,15 @@
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 07:02:36 by alan              #+#    #+#             */
-/*   Updated: 2019/11/03 17:58:35 by alan             ###   ########.fr       */
+/*   Updated: 2019/11/08 19:04:27 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "select_info.h"
+#include "select_string.h"
 #include "drawing.h"
 #include "ft_dnode.h"
 #include "ft_iter.h"
-#include "select_string.h"
-#include "ft_select.h"
 
 int	ft_select_select(struct s_select *info)
 {

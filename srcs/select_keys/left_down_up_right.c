@@ -6,11 +6,11 @@
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 23:03:07 by alan              #+#    #+#             */
-/*   Updated: 2019/11/01 06:54:58 by alan             ###   ########.fr       */
+/*   Updated: 2019/11/08 19:03:29 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_select.h"
+#include "select_info.h"
 #include "select_string.h"
 #include "drawing.h"
 #include "ft_dnode.h"
