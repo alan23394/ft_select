@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "select_config.h"
 #include "select_info.h"
 #include "select_string.h"
 #include "ft_dnode.h"
@@ -74,9 +75,6 @@ static char	*ft_select_output(struct s_dnode *list, int total_size,
 	}
 	return (comb);
 }
-
-# define OUTPUT_PAD_LEN 1
-# define OUTPUT_PAD_CHAR ' '
 
 /*
 ** This function makes a new string with only the selected strings, and sets
