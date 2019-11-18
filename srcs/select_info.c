@@ -6,7 +6,7 @@
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/03 19:30:41 by alan              #+#    #+#             */
-/*   Updated: 2019/11/15 11:14:20 by alan             ###   ########.fr       */
+/*   Updated: 2019/11/18 06:18:37 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	select_info_init(struct s_select *select_info)
 	select_info->term_size.y = 0;
 }
 
-void	update_size(struct s_select *info)
+void	update_term_size(struct s_select *info)
 {
 	info->term_size.x = ft_tc_cols();
 	info->term_size.y = ft_tc_lines();
@@ -39,7 +39,7 @@ void	update_size(struct s_select *info)
 ** shoot for, but there are other things to work on right now
 */
 
-void	update_columns(struct s_select *info)
+void	update_select_columns(struct s_select *info)
 {
 	if (info->term_size.x < SELECT_STRING_MIN_LEN)
 	{

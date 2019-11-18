@@ -6,7 +6,7 @@
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 21:06:42 by alan              #+#    #+#             */
-/*   Updated: 2019/11/08 17:17:00 by alan             ###   ########.fr       */
+/*   Updated: 2019/11/18 08:30:17 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ struct s_select
 };
 
 void	select_info_init(struct s_select *select_info);
-void	update_size(struct s_select *info);
-void	update_columns(struct s_select *info);
+void	update_term_size(struct s_select *info);
+void	update_select_columns(struct s_select *info);
 
 #endif
