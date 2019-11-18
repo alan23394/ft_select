@@ -6,7 +6,7 @@
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 01:42:13 by alan              #+#    #+#             */
-/*   Updated: 2019/11/07 07:56:53 by alan             ###   ########.fr       */
+/*   Updated: 2019/11/18 08:41:37 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ struct s_select_string
 };
 
 struct s_select_string	*select_string_init(char *str, int len, int index);
+void					select_string_delete(struct s_select_string **sel_str);
 
 #endif
