@@ -6,7 +6,7 @@
 /*   By: abarnett <alanbarnett328@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/28 02:07:42 by abarnett          #+#    #+#             */
-/*   Updated: 2019/11/16 07:16:57 by alan             ###   ########.fr       */
+/*   Updated: 2019/11/18 10:55:01 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ static const char	*get_error_string(enum e_err_code error_code)
 	static const char	*error_strings[ERROR_MESSAGE_COUNT] = {
 		0,
 		"Needs arguments",
-		"No terminal entry in the terminfo database",
-		"Must be run in an interactive terminal",
+		"Could not get terminal info from the terminfo database",
 		"Could not initialize the terminal",
 		"Could not enable non-canonical mode",
 		"Could not restore previous terminal state",
