@@ -6,7 +6,7 @@
 /*   By: abarnett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/27 08:18:10 by abarnett          #+#    #+#             */
-/*   Updated: 2019/11/18 16:42:45 by alan             ###   ########.fr       */
+/*   Updated: 2019/11/19 03:16:20 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ static void		select_term_setup(struct termios *term)
 
 /*
 ** This function's job is to tell me that my terminal is ready to use termcaps,
-** and to enable noncanonical mode.
+** and to enable noncanonical mode. If it returns with a failure, I can be sure
+** that it has freed all the memory it may have created.
 */
 
 enum e_err_code	terminal_setup(void)
@@ -59,11 +60,11 @@ enum e_err_code	terminal_setup(void)
 
 enum e_err_code	terminal_restore(void)
 {
+	enum e_err_code	err;
+
+	err = 0;
 	if (ft_term_switch_old() != 0)
-	{
-		delete_terms();
-		return (E_TRESTORE_FAIL);
-	}
+		err = E_TRESTORE_FAIL;
 	delete_terms();
-	return (0);
+	return (err);
 }
