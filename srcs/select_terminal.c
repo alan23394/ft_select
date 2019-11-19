@@ -6,7 +6,7 @@
 /*   By: abarnett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/27 08:18:10 by abarnett          #+#    #+#             */
-/*   Updated: 2019/11/18 06:32:42 by alan             ###   ########.fr       */
+/*   Updated: 2019/11/18 16:42:45 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,11 @@
 ** sets the minimum read characters to 1 with blocking read.
 */
 
-static int		select_term_setup(struct termios *term)
+static void		select_term_setup(struct termios *term)
 {
 	term->c_lflag &= ~(ICANON|ECHO);
 	term->c_cc[VMIN] = 1;
 	term->c_cc[VTIME] = 0;
-	return (0);
 }
 
 enum e_err_code	terminal_setup(void)
