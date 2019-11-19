@@ -6,7 +6,7 @@
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 17:26:31 by alan              #+#    #+#             */
-/*   Updated: 2019/11/19 02:06:12 by alan             ###   ########.fr       */
+/*   Updated: 2019/11/19 03:28:39 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,22 @@ struct s_iter	*make_select_iter(int str_amnt, char **str_array,
 		++i;
 	}
 	return (strings);
+}
+
+/*
+** Assumes that your strings have been created, and the max length is known.
+** Make sure to update the max length before running this function, if it may
+** have changed (i.e. when deleting a string). This function sets the
+** terminal's size (maybe after it's been changed), then it re-calculates the
+** amount of columns there will be. It then goes and sets new grid positions
+** for the strings. I would like to give the strings an index instead of a grid
+** position, which would make this step unnecessary (all I'd have to do is
+** correct the indexes when deleting/inserting an item from the strings).
+*/
+
+void			calibrate_screen(struct s_select *info)
+{
+	update_term_size(info);
+	update_select_columns(info);
+	update_grid_pos(info);
 }
