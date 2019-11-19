@@ -6,7 +6,7 @@
 #    By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/05 13:42:22 by alan              #+#    #+#              #
-#    Updated: 2019/11/16 08:45:51 by alan             ###   ########.fr        #
+#    Updated: 2019/11/18 17:23:00 by alan             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@
 include config.mk
 
 C_SRCS :=		$(wildcard $(SRC_DIR)/*.c)
+C_SRCS +=		$(wildcard $(SRC_DIR)/select_info/*.c)
 C_SRCS +=		$(wildcard $(SRC_DIR)/select_string/*.c)
 C_SRCS +=		$(wildcard $(SRC_DIR)/select_keys/*.c)
 C_OBJS :=		$(patsubst %.c,%.o,$(C_SRCS))

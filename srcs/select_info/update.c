@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   select_info.c                                      :+:      :+:    :+:   */
+/*   update.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/03 19:30:41 by alan              #+#    #+#             */
-/*   Updated: 2019/11/18 06:18:37 by alan             ###   ########.fr       */
+/*   Created: 2019/11/18 17:24:45 by alan              #+#    #+#             */
+/*   Updated: 2019/11/18 17:26:13 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "select_config.h"
 #include "select_info.h"
+#include "select_config.h"
+#include "point.h"
 #include "ft_termcaps.h"
-
-void	select_info_init(struct s_select *select_info)
-{
-	select_info->strings = 0;
-//	select_info->deleted = 0;
-	select_info->output = 0;
-	select_info->str_maxlen = 0;
-	select_info->sel_columns = 0;
-	select_info->sel_column_width = 0;
-	select_info->term_size.x = 0;
-	select_info->term_size.y = 0;
-}
 
 void	update_term_size(struct s_select *info)
 {
