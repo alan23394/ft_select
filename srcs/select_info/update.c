@@ -6,7 +6,7 @@
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 17:24:45 by alan              #+#    #+#             */
-/*   Updated: 2019/11/19 03:02:21 by alan             ###   ########.fr       */
+/*   Updated: 2019/11/19 03:39:34 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,31 @@ void	update_grid_pos(struct s_select *info)
 		++col;
 		node = node->next;
 	}
+}
+
+/*
+** Returns the length of the longest string in the iter. If a string is longer
+** than max, it returns max instead. If max is 0, it is ignored.
+*/
+
+int		get_str_maxlen(struct s_iter *select_strings, unsigned int max)
+{
+	struct s_dnode	*cursor;
+	unsigned int	str_maxlen;
+	unsigned int	len;
+
+	cursor = select_strings->head;
+	str_maxlen = 0;
+	while (cursor)
+	{
+		len = ((struct s_select_string *)cursor->content)->str_len;
+		if (max != 0 && len >= max)
+			return (max);
+		else if (len > str_maxlen)
+		{
+			str_maxlen = len;
+		}
+		cursor = cursor->next;
+	}
+	return (str_maxlen);
 }
