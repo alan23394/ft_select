@@ -6,7 +6,7 @@
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 21:06:42 by alan              #+#    #+#             */
-/*   Updated: 2019/11/18 17:29:29 by alan             ###   ########.fr       */
+/*   Updated: 2019/11/19 03:02:34 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ struct s_select
 void			select_info_init(struct s_select *select_info);
 void			update_term_size(struct s_select *info);
 void			update_select_columns(struct s_select *info);
+void			update_grid_pos(struct s_select *info);
 struct s_iter	*make_select_iter(int str_amnt, char **str_array,
 					unsigned int *str_maxlen);
-void			set_grid_pos(struct s_select *info);
 
 #endif

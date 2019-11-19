@@ -6,14 +6,13 @@
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 17:26:31 by alan              #+#    #+#             */
-/*   Updated: 2019/11/18 17:28:34 by alan             ###   ########.fr       */
+/*   Updated: 2019/11/19 02:06:12 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "select_info.h"
 #include "select_string.h"
 #include "ft_string.h"
-#include "ft_dnode.h"
 #include "ft_iter.h"
 
 /*
@@ -44,27 +43,4 @@ struct s_iter	*make_select_iter(int str_amnt, char **str_array,
 		++i;
 	}
 	return (strings);
-}
-
-void			set_grid_pos(struct s_select *info)
-{
-	unsigned int	line;
-	unsigned int	col;
-	struct s_dnode	*node;
-
-	line = 0;
-	col = 0;
-	node = info->strings->head;
-	while (node)
-	{
-		if (col >= info->sel_columns)
-		{
-			col = 0;
-			++line;
-		}
-		((struct s_select_string *)node->content)->pos.x = col;
-		((struct s_select_string *)node->content)->pos.y = line;
-		++col;
-		node = node->next;
-	}
 }

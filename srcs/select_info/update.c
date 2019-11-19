@@ -6,13 +6,16 @@
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 17:24:45 by alan              #+#    #+#             */
-/*   Updated: 2019/11/18 17:26:13 by alan             ###   ########.fr       */
+/*   Updated: 2019/11/19 03:02:21 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "select_info.h"
+#include "select_string.h"
 #include "select_config.h"
 #include "point.h"
+#include "ft_dnode.h"
+#include "ft_iter.h"
 #include "ft_termcaps.h"
 
 void	update_term_size(struct s_select *info)
@@ -44,4 +47,32 @@ void	update_select_columns(struct s_select *info)
 	info->sel_column_width = info->str_maxlen;
 	info->sel_columns = 1 + (info->term_size.x - info->str_maxlen)
 						/ (info->sel_column_width + SELECT_STRING_PADDING);
+}
+
+/*
+** This function goes through the strings and sets their grid positions using
+** the amount of columns.
+*/
+
+void	update_grid_pos(struct s_select *info)
+{
+	unsigned int	line;
+	unsigned int	col;
+	struct s_dnode	*node;
+
+	line = 0;
+	col = 0;
+	node = info->strings->head;
+	while (node)
+	{
+		if (col >= info->sel_columns)
+		{
+			col = 0;
+			++line;
+		}
+		((struct s_select_string *)node->content)->pos.x = col;
+		((struct s_select_string *)node->content)->pos.y = line;
+		++col;
+		node = node->next;
+	}
 }
