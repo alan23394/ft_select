@@ -29,23 +29,39 @@ static void		select_term_setup(struct termios *term)
 	term->c_cc[VTIME] = 0;
 }
 
+/*
+** This function's job is to tell me that my terminal is ready to use termcaps,
+** and to enable noncanonical mode.
+*/
+
 enum e_err_code	terminal_setup(void)
 {
+	if (ft_tc_setup() != 0)
+	{
+		return (E_NOTERMINFO);
+	}
 	if (init_terms(select_term_setup) != 0)
 	{
 		return (E_TINIT_FAIL);
 	}
 	if (ft_term_switch_new() != 0)
 	{
+		delete_terms();
 		return (E_TNONCANON_FAIL);
 	}
 	return (0);
 }
 
+/*
+** This function disables noncanonical mode by switching to the previous
+** terminal, and then deletes the stored terminal struct.
+*/
+
 enum e_err_code	terminal_restore(void)
 {
 	if (ft_term_switch_old() != 0)
 	{
+		delete_terms();
 		return (E_TRESTORE_FAIL);
 	}
 	delete_terms();
