@@ -10,11 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "debug.h"
-#include "error.h"
-#include "terminal.h"
 #include "ft_select.h"
-#include "ft_printf.h"
+#include "select_terminal.h"
+#include "select_debug.h"
+#include "error.h"
 #include <unistd.h>
 
 enum e_err_code	select_return(enum e_err_code error_code)
