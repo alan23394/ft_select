@@ -16,7 +16,6 @@
 #include "ft_select.h"
 #include "ft_printf.h"
 #include <unistd.h>
-#include <stdlib.h>
 
 enum e_err_code	select_return(enum e_err_code error_code)
 {
@@ -30,39 +29,22 @@ enum e_err_code	select_return(enum e_err_code error_code)
 	return (error_code);
 }
 
-static enum e_err_code	select_setup(int argc)
+enum e_err_code			ft_select(const char **selected, int argc, char **argv)
 {
-	enum e_err_code	err;
-	const char		*term_name;
+	enum e_err_code		err;
+	struct s_select		select_info;
 
 	if (argc < 1)
 	{
 		return (E_NOARGS);
 	}
-	if (!isatty(STDIN_FILENO))
-	{
-		return (E_NOTATTY);
-	}
-	PRINT_DEBUG("Setting up terminal");
-	term_name = getenv("TERM");
-	if (tgetent(0, term_name) != 1)
-	{
-		return (E_NOTERMINFO);
-	}
 	if ((err = terminal_setup()) != 0)
 	{
 		return (err);
 	}
-	return (0);
-}
-
-enum e_err_code			ft_select(const char **selected, int argc, char **argv)
-{
-	enum e_err_code	err;
-
-	if ((err = select_setup(argc)) != 0)
+	if (setup_screen())
 	{
-		return (err);
+		PRINT_DEBUG("Can't properly set up screen");
 	}
 	return (select_return(0));
 }
