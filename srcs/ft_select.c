@@ -16,14 +16,21 @@
 #include "error.h"
 #include <unistd.h>
 
-enum e_err_code	select_return(enum e_err_code error_code)
+static enum e_err_code	select_return(enum e_err_code error_code)
 {
 	enum e_err_code	terminal_code;
 
+	if (restore_screen())
+	{
+		PRINT_DEBUG("Can't properly restore screen");
+	}
 	terminal_code = terminal_restore();
 	if (terminal_code != 0)
 	{
-		print_error(terminal_code);
+		if (error_code == 0)
+			error_code = terminal_code;
+		else
+			print_error(terminal_code);
 	}
 	return (error_code);
 }
