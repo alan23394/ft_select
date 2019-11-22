@@ -6,7 +6,7 @@
 /*   By: abarnett <alanbarnett328@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/27 08:28:17 by abarnett          #+#    #+#             */
-/*   Updated: 2019/11/20 22:17:50 by alan             ###   ########.fr       */
+/*   Updated: 2019/11/22 14:21:25 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 #include <unistd.h>
 #include <stdint.h>
 
-const char			*ft_select_loop(struct s_select *info)
+static const char		*ft_select_loop(struct s_select *info)
 {
 	uint32_t		input;
 	int				ret;
