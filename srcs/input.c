@@ -6,7 +6,7 @@
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 08:20:20 by alan              #+#    #+#             */
-/*   Updated: 2019/11/18 17:15:48 by alan             ###   ########.fr       */
+/*   Updated: 2019/11/22 16:59:19 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	handle_char_input(char input, struct s_select *info)
 		['l'] = ft_select_right,
 		['g'] = ft_select_home,
 		['G'] = ft_select_end,
+		['x'] = ft_select_delete,
 		['a'] = ft_select_all,
 		['d'] = ft_deselect_all,
 		['i'] = ft_select_invert,

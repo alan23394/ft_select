@@ -6,7 +6,7 @@
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 06:50:24 by alan              #+#    #+#             */
-/*   Updated: 2019/11/18 17:15:15 by alan             ###   ########.fr       */
+/*   Updated: 2019/11/22 16:58:38 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int	ft_select_up(struct s_select *info);
 int	ft_select_right(struct s_select *info);
 int	ft_select_home(struct s_select *info);
 int	ft_select_end(struct s_select *info);
+
+int	ft_select_delete(struct s_select *info);
 
 int	handle_char_input(char input, struct s_select *info);
 int	handle_arrow_key(uint32_t input, struct s_select *info);
