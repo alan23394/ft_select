@@ -6,11 +6,12 @@
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 14:55:36 by alan              #+#    #+#             */
-/*   Updated: 2019/11/18 12:24:50 by alan             ###   ########.fr       */
+/*   Updated: 2019/11/24 09:07:04 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_termcaps.h"
+#include "ft_printf.h"
 
 /*
 ** Returns 0 on success, 1 on failure.
@@ -29,6 +30,7 @@ int	setup_screen(void)
 	{
 		ft_tc_put(TC_CLEAR);
 	}
+	ft_printf("\e[?1000h");
 	ft_tc_put(TC_CURSOR_INVISIBLE);
 	return (0);
 }
@@ -44,6 +46,7 @@ int	restore_screen(void)
 	{
 		ft_tc_put(TC_CLEAR);
 	}
+	ft_printf("\e[?1000l");
 	ft_tc_put(TC_CURSOR_VISIBLE);
 	return (0);
 }

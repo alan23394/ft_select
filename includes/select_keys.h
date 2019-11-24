@@ -6,7 +6,7 @@
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 06:50:24 by alan              #+#    #+#             */
-/*   Updated: 2019/11/22 16:58:38 by alan             ###   ########.fr       */
+/*   Updated: 2019/11/24 09:07:02 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,14 @@
 # define KEY_RIGHT_ARROW 0x435b1b
 # define KEY_LEFT_ARROW 0x445b1b
 
+# define MOUSE_LEFTCLICK_DOWN 0x204D5b1b
+
 struct s_select;
 
 int	ft_select_complete(struct s_select *info);
 int	ft_select_quit(struct s_select *info);
+
+int	ft_select_mouse_click(struct s_select *info);
 
 int	ft_select_select(struct s_select *info);
 int	ft_select_all(struct s_select *info);
