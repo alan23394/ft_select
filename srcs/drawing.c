@@ -6,7 +6,7 @@
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 04:47:56 by alan              #+#    #+#             */
-/*   Updated: 2019/11/10 08:19:56 by alan             ###   ########.fr       */
+/*   Updated: 2019/11/25 23:16:26 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,20 +46,20 @@ void	draw_string(struct s_select *info, struct s_select_string *string)
 	move_to_gridpos(info, string->pos.x, string->pos.y);
 	if (string->selected)
 		if (string->str_len > info->sel_column_width)
-			ft_printfd(0, "%s%.*s%.*s%s", "\e[7m",
+			ft_printfd(0, "%s%.*s%.*s%s", COLOR_SELECTED,
 					info->sel_column_width - SELECT_TRIM_STRLEN, string->str,
-					SELECT_TRIM_STRLEN, SELECT_TRIM_STR,
-					"\e[0m");
+					SELECT_TRIM_STRLEN, SELECT_TRIM_STR, "\e[0m");
 		else
-			ft_printfd(0, "%s%.*s%s",
-					"\e[7m", info->sel_column_width, string->str, "\e[0m");
+			ft_printfd(0, "%s%.*s%s", COLOR_SELECTED,
+					info->sel_column_width, string->str, "\e[0m");
 	else
 		if (string->str_len > info->sel_column_width)
-			ft_printfd(0, "%.*s%.*s",
+			ft_printfd(0, "%s%.*s%.*s%s", COLOR_NORMAL,
 					info->sel_column_width - SELECT_TRIM_STRLEN, string->str,
-					SELECT_TRIM_STRLEN, SELECT_TRIM_STR);
+					SELECT_TRIM_STRLEN, SELECT_TRIM_STR, "\e[0m");
 		else
-			ft_printfd(0, "%.*s", info->sel_column_width, string->str);
+			ft_printfd(0, "%s%.*s%s", COLOR_NORMAL,
+					info->sel_column_width, string->str, "\e[0m");
 }
 
 void	draw_cursor_string(struct s_select *info, struct s_select_string *string)
@@ -67,23 +67,20 @@ void	draw_cursor_string(struct s_select *info, struct s_select_string *string)
 	move_to_gridpos(info, string->pos.x, string->pos.y);
 	if (string->selected)
 		if (string->str_len > info->sel_column_width)
-			ft_printfd(0, "%s%.*s%.*s%s", "\e[4;7m",
+			ft_printfd(0, "%s%.*s%.*s%s", COLOR_SELECTED_CURSOR,
 					info->sel_column_width - SELECT_TRIM_STRLEN, string->str,
-					SELECT_TRIM_STRLEN, SELECT_TRIM_STR,
-					"\e[0m");
+					SELECT_TRIM_STRLEN, SELECT_TRIM_STR, "\e[0m");
 		else
-			ft_printfd(0, "%s%.*s%s",
-					"\e[4;7m", info->sel_column_width, string->str, "\e[0m");
+			ft_printfd(0, "%s%.*s%s", COLOR_SELECTED_CURSOR,
+					info->sel_column_width, string->str, "\e[0m");
 	else
 		if (string->str_len > info->sel_column_width)
-			ft_printfd(0, "%s%.*s%.*s%s", "\e[4m",
+			ft_printfd(0, "%s%.*s%.*s%s", COLOR_CURSOR,
 					info->sel_column_width - SELECT_TRIM_STRLEN, string->str,
-					SELECT_TRIM_STRLEN, SELECT_TRIM_STR,
-					"\e[0m");
+					SELECT_TRIM_STRLEN, SELECT_TRIM_STR, "\e[0m");
 		else
-			ft_printfd(0, "%s%.*s%s", "\e[4m",
-					info->sel_column_width, string->str,
-					"\e[0m");
+			ft_printfd(0, "%s%.*s%s", COLOR_CURSOR,
+					info->sel_column_width, string->str, "\e[0m");
 }
 
 void	draw_screen(struct s_select *info)

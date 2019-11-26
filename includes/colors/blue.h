@@ -1,0 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   blue.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/25 23:05:41 by alan              #+#    #+#             */
+/*   Updated: 2019/11/25 23:15:07 by alan             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef STANDARD_H
+# define STANDARD_H
+
+# define COLOR_NORMAL "\e[34m"
+# define COLOR_SELECTED "\e[1;34m"
+# define COLOR_CURSOR "\e[34;46m"
+# define COLOR_SELECTED_CURSOR "\e[1;37;46m"
+
+#endif

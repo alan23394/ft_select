@@ -6,7 +6,7 @@
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 17:14:05 by alan              #+#    #+#             */
-/*   Updated: 2019/11/09 04:18:12 by alan             ###   ########.fr       */
+/*   Updated: 2019/11/25 23:15:47 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,14 @@
 
 # define OUTPUT_PAD_CHAR ' '
 # define OUTPUT_PAD_LEN 1
+
+/*
+** This section is for colors used when selecting and moving the cursor, as
+** well as normal text
+**
+** Available headers are in the includes/colors folder
+*/
+
+# include "colors/standard.h"
 
 #endif
