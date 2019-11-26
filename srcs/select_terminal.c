@@ -6,28 +6,16 @@
 /*   By: abarnett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/27 08:18:10 by abarnett          #+#    #+#             */
-/*   Updated: 2019/11/19 03:16:20 by alan             ###   ########.fr       */
+/*   Updated: 2019/11/24 00:23:16 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "select_terminal.h"
 #include "error.h"
 #include "ft_term.h"
+#include "ft_term/term_setups.h"
 #include "ft_termcaps.h"
 #include "ft_mem.h"
-#include <termios.h>
-
-/*
-** This function enables noncanonical mode, disables character echoing, and
-** sets the minimum read characters to 1 with blocking read.
-*/
-
-static void		select_term_setup(struct termios *term)
-{
-	term->c_lflag &= ~(ICANON|ECHO);
-	term->c_cc[VMIN] = 1;
-	term->c_cc[VTIME] = 0;
-}
 
 /*
 ** This function's job is to tell me that my terminal is ready to use termcaps,
@@ -41,7 +29,7 @@ enum e_err_code	terminal_setup(void)
 	{
 		return (E_NOTERMINFO);
 	}
-	if (init_terms(select_term_setup) != 0)
+	if (init_terms(interactive_term_setup) != 0)
 	{
 		return (E_TINIT_FAIL);
 	}
