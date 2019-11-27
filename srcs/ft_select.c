@@ -37,9 +37,9 @@ static void		ft_select_loop(struct s_select *info)
 		if (ret)
 		{
 			if (input >= 128)
-				ret = handle_arrow_key(input, info);
+				ret = handle_fourbyte_input(input, info);
 			else
-				ret = handle_char_input((char)input, info);
+				ret = handle_onebyte_input((char)input, info);
 			if (!ret)
 				break;
 		}
