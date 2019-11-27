@@ -6,7 +6,7 @@
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/24 06:00:31 by alan              #+#    #+#             */
-/*   Updated: 2019/11/24 07:29:09 by alan             ###   ########.fr       */
+/*   Updated: 2019/11/26 16:50:29 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include "ft_termcaps.h"
 #include <unistd.h>
 
-struct s_select_string	*get_string_at_coord(struct s_select *info, int x, int y)
+static struct s_dnode	*get_node_at_coord(struct s_select *info, int x, int y)
 {
 	int	last_line;
 	int	last_col;
@@ -37,15 +37,15 @@ struct s_select_string	*get_string_at_coord(struct s_select *info, int x, int y)
 		cursor = cursor->next;
 		--goal;
 	}
-	return (cursor->content);
+	return (cursor);
 }
 
 int	ft_select_mouse_click(struct s_select *info)
 {
-	int	x;
-	int	y;
-	int	col;
-	unsigned int	overhang;
+	int						x;
+	int						y;
+	int						col;
+	unsigned int			overhang;
 	struct s_select_string	*selected_string;
 
 	x = 0;
@@ -56,7 +56,7 @@ int	ft_select_mouse_click(struct s_select *info)
 	y -= 33;
 	col = (x / (info->sel_column_width + SELECT_STRING_PADDING));
 	overhang = (x % (info->sel_column_width + SELECT_STRING_PADDING));
-	selected_string = get_string_at_coord(info, col, y);
+	selected_string = get_node_at_coord(info, col, y)->content;
 	if (selected_string && (overhang < selected_string->str_len))
 	{
 		selected_string->selected ^= 1;
