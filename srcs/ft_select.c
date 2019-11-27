@@ -43,23 +43,16 @@ static const char		*ft_select_loop(struct s_select *info)
 	return (info->output);
 }
 
-static enum e_err_code	select_return(enum e_err_code error_code)
+static enum e_err_code	select_restore(void)
 {
-	enum e_err_code	terminal_code;
+	enum e_err_code	err;
 
 	if (restore_screen())
 	{
 		PRINT_DEBUG("Can't properly restore screen");
 	}
-	terminal_code = terminal_restore();
-	if (terminal_code != 0)
-	{
-		if (error_code == 0)
-			error_code = terminal_code;
-		else
-			print_error(terminal_code);
-	}
-	return (error_code);
+	err = terminal_restore();
+	return (err);
 }
 
 enum e_err_code			ft_select(const char **selected, int argc, char **argv)
@@ -84,5 +77,6 @@ enum e_err_code			ft_select(const char **selected, int argc, char **argv)
 	calibrate_screen(&select_info);
 	draw_screen(&select_info);
 	*selected = ft_select_loop(&select_info);
-	return (select_return(0));
+	err = select_restore();
+	return (err);
 }
