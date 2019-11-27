@@ -6,13 +6,14 @@
 /*   By: abarnett <alanbarnett328@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/27 08:28:17 by abarnett          #+#    #+#             */
-/*   Updated: 2019/11/22 14:21:25 by alan             ###   ########.fr       */
+/*   Updated: 2019/11/26 23:59:19 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
 #include "select_terminal.h"
 #include "select_info.h"
+#include "select_signals.h"
 #include "select_keys.h"
 #include "select_debug.h"
 #include "error.h"
@@ -32,6 +33,8 @@ static void		ft_select_loop(struct s_select *info)
 	{
 		input = 0;
 		if (ft_iter_isempty(info->strings))
+			break;
+		if (!handle_signal(info))
 			break;
 		ret = read(STDIN_FILENO, &input, 4);
 		if (ret)
@@ -71,6 +74,7 @@ enum e_err_code			ft_select(const char **selected, int argc, char **argv)
 	{
 		return (err);
 	}
+	setup_signal_handling();
 	if (setup_screen())
 	{
 		PRINT_DEBUG("Can't properly set up screen");
@@ -82,5 +86,6 @@ enum e_err_code			ft_select(const char **selected, int argc, char **argv)
 	ft_select_loop(&select_info);
 	*selected = select_info.output;
 	err = select_restore();
+	restore_signal_handling();
 	return (err);
 }
