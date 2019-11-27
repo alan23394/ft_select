@@ -6,7 +6,7 @@
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 08:20:20 by alan              #+#    #+#             */
-/*   Updated: 2019/11/24 07:27:45 by alan             ###   ########.fr       */
+/*   Updated: 2019/11/26 16:48:01 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,9 @@ int	handle_arrow_key(uint32_t input, struct s_select *info)
 	else if (input == KEY_LEFT_ARROW)
 		return (ft_select_left(info));
 	else if (input == MOUSE_LEFTCLICK_DOWN)
-		return (ft_select_mouse_click(info));
+		return (ft_select_mouse_leftclick(info));
+	else if (input == MOUSE_RIGHTCLICK_DOWN)
+		return (ft_select_mouse_rightclick(info));
 	else
 		return (1);
 }
