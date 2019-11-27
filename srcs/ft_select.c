@@ -21,14 +21,18 @@
 #include <unistd.h>
 #include <stdint.h>
 
-static const char		*ft_select_loop(struct s_select *info)
+static void		ft_select_loop(struct s_select *info)
 {
 	uint32_t		input;
 	int				ret;
 
+	if (!info)
+		return ;
 	while (42)
 	{
 		input = 0;
+		if (ft_iter_isempty(info->strings))
+			break;
 		ret = read(STDIN_FILENO, &input, 4);
 		if (ret)
 		{
@@ -40,7 +44,6 @@ static const char		*ft_select_loop(struct s_select *info)
 				break;
 		}
 	}
-	return (info->output);
 }
 
 static enum e_err_code	select_restore(void)
@@ -76,7 +79,8 @@ enum e_err_code			ft_select(const char **selected, int argc, char **argv)
 	select_info.strings = make_select_iter(argc, argv, &(select_info.str_maxlen));
 	calibrate_screen(&select_info);
 	draw_screen(&select_info);
-	*selected = ft_select_loop(&select_info);
+	ft_select_loop(&select_info);
+	*selected = select_info.output;
 	err = select_restore();
 	return (err);
 }
