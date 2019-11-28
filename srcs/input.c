@@ -6,7 +6,7 @@
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 08:20:20 by alan              #+#    #+#             */
-/*   Updated: 2019/11/27 00:00:33 by alan             ###   ########.fr       */
+/*   Updated: 2019/11/27 18:16:42 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,24 +54,24 @@ int	handle_onebyte_input(char input, struct s_select *info)
 	return (1);
 }
 
-int	handle_fourbyte_input(enum e_keys key, struct s_select *info)
+int	handle_fourbyte_input(uint32_t input, struct s_select *info)
 {
+	static int	(*input_functions[0xffff])(struct s_select *info) = {
+		[KEY_UP_ARROW >> 16] = ft_select_up,
+		[KEY_DOWN_ARROW >> 16] = ft_select_down,
+		[KEY_RIGHT_ARROW >> 16] = ft_select_right,
+		[KEY_LEFT_ARROW >> 16] = ft_select_left,
+		[MOUSE_LEFTCLICK_DOWN >> 16] = ft_select_mouse_leftclick,
+		[MOUSE_RIGHTCLICK_DOWN >> 16] = ft_select_mouse_rightclick,
+	};
+
 	if (!info || ft_iter_isempty(info->strings))
 	{
 		return (0);
 	}
-	if (input == KEY_RIGHT_ARROW)
-		return (ft_select_right(info));
-	else if (input == KEY_DOWN_ARROW)
-		return (ft_select_down(info));
-	else if (input == KEY_UP_ARROW)
-		return (ft_select_up(info));
-	else if (input == KEY_LEFT_ARROW)
-		return (ft_select_left(info));
-	else if (input == MOUSE_LEFTCLICK_DOWN)
-		return (ft_select_mouse_leftclick(info));
-	else if (input == MOUSE_RIGHTCLICK_DOWN)
-		return (ft_select_mouse_rightclick(info));
-	else
-		return (1);
+	if ((input & 0x00005b1b) && (input_functions[input >> 16]))
+	{
+		return (input_functions[input >> 16](info));
+	}
+	return (1);
 }
