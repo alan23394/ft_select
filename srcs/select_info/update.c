@@ -6,7 +6,7 @@
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 17:24:45 by alan              #+#    #+#             */
-/*   Updated: 2019/11/19 03:39:34 by alan             ###   ########.fr       */
+/*   Updated: 2019/12/01 13:20:12 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,16 @@
 #include "point.h"
 #include "ft_dnode.h"
 #include "ft_iter.h"
-#include "ft_termcaps.h"
+#include <unistd.h>
+#include <sys/ioctl.h>
 
 void	update_term_size(struct s_select *info)
 {
-	info->term_size.x = ft_tc_cols();
-	info->term_size.y = ft_tc_lines();
+	struct winsize	size;
+
+	ioctl(STDIN_FILENO, TIOCGWINSZ, &size);
+	info->term_size.x = size.ws_col;
+	info->term_size.y = size.ws_row;
 }
 
 /*
