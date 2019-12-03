@@ -6,7 +6,7 @@
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 08:20:20 by alan              #+#    #+#             */
-/*   Updated: 2019/11/27 18:16:42 by alan             ###   ########.fr       */
+/*   Updated: 2019/12/03 12:57:38 by abarnett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 ** These functions return 1 if the loop is to continue, or 0 if it is to quit.
 */
 
-int	handle_onebyte_input(char input, struct s_select *info)
+int	handle_onebyte_input(uint32_t input, struct s_select *info)
 {
 	static int	(*input_functions[128])(struct s_select *info) = {
 		[KEY_CTRL_A] = ft_select_all,
@@ -44,14 +44,8 @@ int	handle_onebyte_input(char input, struct s_select *info)
 	};
 
 	if (!info || ft_iter_isempty(info->strings))
-	{
 		return (0);
-	}
-	if (input_functions[(int)input])
-	{
-		return (input_functions[(int)input](info));
-	}
-	return (1);
+	return (input_functions[input] ? input_functions[input](info) : 1);
 }
 
 int	handle_fourbyte_input(uint32_t input, struct s_select *info)
