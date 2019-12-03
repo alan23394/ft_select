@@ -6,7 +6,7 @@
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/24 06:00:31 by alan              #+#    #+#             */
-/*   Updated: 2019/11/26 16:50:29 by alan             ###   ########.fr       */
+/*   Updated: 2019/12/03 11:10:34 by abarnett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 
 static struct s_dnode	*get_node_at_coord(struct s_select *info, int x, int y)
 {
-	int	last_line;
-	int	last_col;
-	int	goal;
+	int				last_line;
+	int				last_col;
+	int				goal;
 	struct s_dnode	*cursor;
 
 	last_line = ((struct s_select_string *)info->strings->tail->content)->pos.y;

@@ -6,7 +6,7 @@
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 07:01:30 by alan              #+#    #+#             */
-/*   Updated: 2019/11/08 19:04:17 by alan             ###   ########.fr       */
+/*   Updated: 2019/12/03 11:10:01 by abarnett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int	count_selected(struct s_dnode *list, int *len)
 
 /*
 ** Takes the list of strings (which may or may not be selected), and the total
-** size of the string 
+** size of the string
 **
 ** The int total_size SHOULD CONSIDER the length of the padding
 ** The pad character will be used to strinit the output string
@@ -62,7 +62,6 @@ static char	*ft_select_output(struct s_dnode *list, int total_size,
 	cur = comb;
 	while (list && (cur - comb < total_size))
 	{
-		//string = ((struct s_select_string *)list->content);
 		string = list->content;
 		if (string && string->selected)
 		{

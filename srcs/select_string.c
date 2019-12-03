@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   select_string_init.c                               :+:      :+:    :+:   */
+/*   select_string.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 01:42:40 by alan              #+#    #+#             */
-/*   Updated: 2019/11/18 08:45:49 by alan             ###   ########.fr       */
+/*   Updated: 2019/12/03 12:59:31 by abarnett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,23 @@
 
 struct s_select_string	*select_string_init(char *str, int len, int index)
 {
-	struct s_select_string	*sel_str;
+	struct s_select_string	*s;
 
-	sel_str = (struct s_select_string *)malloc(sizeof(struct s_select_string));
-	if (!sel_str)
+	s = (struct s_select_string *)ft_memalloc(sizeof(struct s_select_string));
+	if (!s)
 		return (0);
-	sel_str->str = str;
-	sel_str->str_len = len;
-	sel_str->str_index = index;
-	sel_str->selected = 0;
-	sel_str->pos.x = 0;
-	sel_str->pos.y = 0;
-	return (sel_str);
-};
+	s->str = str;
+	s->str_len = len;
+	s->str_index = index;
+	s->selected = 0;
+	s->pos.x = 0;
+	s->pos.y = 0;
+	return (s);
+}
 
-void					select_string_delete(struct s_select_string **sel_str)
+void					select_string_delete(struct s_select_string **str)
 {
-	if (!sel_str || !*sel_str)
+	if (!str || !*str)
 		return ;
-	ft_memdel((void **)sel_str);
-};
+	ft_memdel((void **)str);
+}
