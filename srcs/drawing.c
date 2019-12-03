@@ -6,7 +6,7 @@
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 04:47:56 by alan              #+#    #+#             */
-/*   Updated: 2019/11/25 23:16:26 by alan             ###   ########.fr       */
+/*   Updated: 2019/12/03 11:28:51 by abarnett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "ft_dnode.h"
 #include "ft_iter.h"
 #include "ft_termcaps.h"
+#include <unistd.h>
 
 /*
 ** draw string and draw cursor string, combined with move to gridpos
@@ -41,49 +42,54 @@ static void	move_to_gridpos(struct s_select *info,
 ** print the whole thing once with the stuff considered
 */
 
-void	draw_string(struct s_select *info, struct s_select_string *string)
+void		draw_string(struct s_select *info, struct s_select_string *string)
 {
+	const char	*color;
+
 	move_to_gridpos(info, string->pos.x, string->pos.y);
+	color = COLOR_NORMAL;
 	if (string->selected)
-		if (string->str_len > info->sel_column_width)
-			ft_printfd(0, "%s%.*s%.*s%s", COLOR_SELECTED,
-					info->sel_column_width - SELECT_TRIM_STRLEN, string->str,
-					SELECT_TRIM_STRLEN, SELECT_TRIM_STR, "\e[0m");
-		else
-			ft_printfd(0, "%s%.*s%s", COLOR_SELECTED,
-					info->sel_column_width, string->str, "\e[0m");
+	{
+		color = COLOR_SELECTED;
+	}
+	if (string->str_len > info->sel_column_width)
+	{
+		ft_printfd(STDIN_FILENO, "%s%.*s%.*s%s", color,
+				info->sel_column_width - SELECT_TRIM_STRLEN, string->str,
+				SELECT_TRIM_STRLEN, SELECT_TRIM_STR, "\e[0m");
+	}
 	else
-		if (string->str_len > info->sel_column_width)
-			ft_printfd(0, "%s%.*s%.*s%s", COLOR_NORMAL,
-					info->sel_column_width - SELECT_TRIM_STRLEN, string->str,
-					SELECT_TRIM_STRLEN, SELECT_TRIM_STR, "\e[0m");
-		else
-			ft_printfd(0, "%s%.*s%s", COLOR_NORMAL,
-					info->sel_column_width, string->str, "\e[0m");
+	{
+		ft_printfd(STDIN_FILENO, "%s%.*s%s", color,
+				info->sel_column_width, string->str, "\e[0m");
+	}
 }
 
-void	draw_cursor_string(struct s_select *info, struct s_select_string *string)
+void		draw_cursor_string(struct s_select *info,
+								struct s_select_string *string)
 {
+	const char	*color;
+
 	move_to_gridpos(info, string->pos.x, string->pos.y);
+	color = COLOR_CURSOR;
 	if (string->selected)
-		if (string->str_len > info->sel_column_width)
-			ft_printfd(0, "%s%.*s%.*s%s", COLOR_SELECTED_CURSOR,
-					info->sel_column_width - SELECT_TRIM_STRLEN, string->str,
-					SELECT_TRIM_STRLEN, SELECT_TRIM_STR, "\e[0m");
-		else
-			ft_printfd(0, "%s%.*s%s", COLOR_SELECTED_CURSOR,
-					info->sel_column_width, string->str, "\e[0m");
+	{
+		color = COLOR_SELECTED_CURSOR;
+	}
+	if (string->str_len > info->sel_column_width)
+	{
+		ft_printfd(STDIN_FILENO, "%s%.*s%.*s%s", color,
+				info->sel_column_width - SELECT_TRIM_STRLEN, string->str,
+				SELECT_TRIM_STRLEN, SELECT_TRIM_STR, "\e[0m");
+	}
 	else
-		if (string->str_len > info->sel_column_width)
-			ft_printfd(0, "%s%.*s%.*s%s", COLOR_CURSOR,
-					info->sel_column_width - SELECT_TRIM_STRLEN, string->str,
-					SELECT_TRIM_STRLEN, SELECT_TRIM_STR, "\e[0m");
-		else
-			ft_printfd(0, "%s%.*s%s", COLOR_CURSOR,
-					info->sel_column_width, string->str, "\e[0m");
+	{
+		ft_printfd(STDIN_FILENO, "%s%.*s%s", color,
+				info->sel_column_width, string->str, "\e[0m");
+	}
 }
 
-void	draw_screen(struct s_select *info)
+void		draw_screen(struct s_select *info)
 {
 	struct s_dnode	*dnode;
 
