@@ -6,7 +6,7 @@
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 17:14:14 by alan              #+#    #+#             */
-/*   Updated: 2019/11/26 20:12:52 by alan             ###   ########.fr       */
+/*   Updated: 2019/12/01 13:22:07 by abarnett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ static int	hold_sig(int sig)
 void		signal_catch(int sig)
 {
 	hold_sig(sig);
+	signal(sig, signal_catch);
 	ioctl(STDIN_FILENO, TIOCSTI, "\0");
 }
 
