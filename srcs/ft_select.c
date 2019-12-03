@@ -6,7 +6,7 @@
 /*   By: abarnett <alanbarnett328@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/27 08:28:17 by abarnett          #+#    #+#             */
-/*   Updated: 2019/11/26 23:59:19 by alan             ###   ########.fr       */
+/*   Updated: 2019/12/03 12:42:27 by abarnett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 #include <unistd.h>
 #include <stdint.h>
 
-static void		ft_select_loop(struct s_select *info)
+static void				ft_select_loop(struct s_select *info)
 {
 	uint32_t		input;
 	int				ret;
@@ -33,9 +33,9 @@ static void		ft_select_loop(struct s_select *info)
 	{
 		input = 0;
 		if (ft_iter_isempty(info->strings))
-			break;
+			break ;
 		if (!handle_signal(info))
-			break;
+			break ;
 		ret = read(STDIN_FILENO, &input, 4);
 		if (ret)
 		{
@@ -44,7 +44,7 @@ static void		ft_select_loop(struct s_select *info)
 			else
 				ret = handle_onebyte_input((char)input, info);
 			if (!ret)
-				break;
+				break ;
 		}
 	}
 }
@@ -64,7 +64,7 @@ static enum e_err_code	select_restore(void)
 enum e_err_code			ft_select(const char **selected, int argc, char **argv)
 {
 	enum e_err_code		err;
-	struct s_select		select_info;
+	struct s_select		info;
 
 	if (argc < 1)
 	{
@@ -79,12 +79,12 @@ enum e_err_code			ft_select(const char **selected, int argc, char **argv)
 	{
 		PRINT_DEBUG("Can't properly set up screen");
 	}
-	select_info_init(&select_info);
-	select_info.strings = make_select_iter(argc, argv, &(select_info.str_maxlen));
-	calibrate_screen(&select_info);
-	draw_screen(&select_info);
-	ft_select_loop(&select_info);
-	*selected = select_info.output;
+	select_info_init(&info);
+	info.strings = make_select_iter(argc, argv, &(info.str_maxlen));
+	calibrate_screen(&info);
+	draw_screen(&info);
+	ft_select_loop(&info);
+	*selected = info.output;
 	err = select_restore();
 	restore_signal_handling();
 	return (err);
