@@ -6,7 +6,7 @@
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/03 19:30:41 by alan              #+#    #+#             */
-/*   Updated: 2019/11/18 17:25:36 by alan             ###   ########.fr       */
+/*   Updated: 2019/12/03 12:45:12 by abarnett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	select_info_init(struct s_select *select_info)
 {
 	select_info->strings = 0;
-//	select_info->deleted = 0;
 	select_info->output = 0;
 	select_info->str_maxlen = 0;
 	select_info->sel_columns = 0;
