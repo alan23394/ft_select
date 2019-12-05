@@ -6,7 +6,7 @@
 /*   By: abarnett <alanbarnett328@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/27 08:28:17 by abarnett          #+#    #+#             */
-/*   Updated: 2019/12/03 12:42:27 by abarnett         ###   ########.fr       */
+/*   Updated: 2019/12/07 19:01:25 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void				ft_select_loop(struct s_select *info)
 		if (!handle_signal(info))
 			break ;
 		ret = read(STDIN_FILENO, &input, 4);
-		if (ret)
+		if (ret && input)
 		{
 			if (input >= 128)
 				ret = handle_fourbyte_input(input, info);
