@@ -6,7 +6,7 @@
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 17:14:14 by alan              #+#    #+#             */
-/*   Updated: 2019/12/01 13:22:07 by abarnett         ###   ########.fr       */
+/*   Updated: 2019/12/07 19:02:02 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ static int	hold_sig(int sig)
 
 /*
 ** The function that runs to catch signals and store them in the holder
+** It resets the signal handler because some platforms clear the signal handler
+** after it's first execution
 ** It sends in a null byte to stdin to exit the read and cause the loop to
 ** continue
 ** If the read in my loop returns 0, then nothing happens anyway, so this
