@@ -6,7 +6,7 @@
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 06:50:24 by alan              #+#    #+#             */
-/*   Updated: 2019/12/07 19:03:03 by alan             ###   ########.fr       */
+/*   Updated: 2019/12/07 19:16:56 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # define KEY_CTRL_F 6
 # define KEY_CTRL_N 14
 # define KEY_CTRL_P 16
+
+# define KEY_DELETE 0x7e335b1b
 
 # define KEY_UP_ARROW 0x415b1b
 # define KEY_DOWN_ARROW 0x425b1b
