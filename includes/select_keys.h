@@ -6,7 +6,7 @@
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 06:50:24 by alan              #+#    #+#             */
-/*   Updated: 2019/12/03 12:57:57 by abarnett         ###   ########.fr       */
+/*   Updated: 2019/12/07 19:03:03 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # define MOUSE_RIGHTCLICK_DOWN 0x224D5b1b
 
 struct s_select;
+struct s_dnode;
 
 int	ft_select_complete(struct s_select *info);
 int	ft_select_quit(struct s_select *info);
@@ -49,6 +50,7 @@ int	ft_select_right(struct s_select *info);
 int	ft_select_home(struct s_select *info);
 int	ft_select_end(struct s_select *info);
 
+int	select_delete_node(struct s_select *info, struct s_dnode *node);
 int	ft_select_delete(struct s_select *info);
 
 int	handle_onebyte_input(uint32_t input, struct s_select *info);
