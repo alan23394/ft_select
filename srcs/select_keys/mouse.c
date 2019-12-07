@@ -59,11 +59,11 @@ static void				delete_non_cursor(struct s_select *info,
 
 int						ft_select_mouse_leftclick(struct s_select *info)
 {
-	int						x;
-	int						y;
-	int						col;
-	unsigned int			overhang;
-	struct s_select_string	*selected_string;
+	int				x;
+	int				y;
+	int				col;
+	unsigned int	overhang;
+	struct s_dnode	*selected_node;
 
 	x = 0;
 	y = 0;
@@ -73,14 +73,15 @@ int						ft_select_mouse_leftclick(struct s_select *info)
 	y -= 33;
 	col = (x / (info->sel_column_width + SELECT_STRING_PADDING));
 	overhang = (x % (info->sel_column_width + SELECT_STRING_PADDING));
-	selected_string = get_node_at_coord(info, col, y)->content;
-	if (selected_string && (overhang < selected_string->str_len))
+	selected_node = get_node_at_coord(info, col, y);
+	if (selected_node && (overhang <
+				((struct s_select_string *)selected_node->content)->str_len))
 	{
-		selected_string->selected ^= 1;
-		if (info->strings->cur->content == selected_string)
-			draw_cursor_string(info, selected_string);
+		((struct s_select_string *)selected_node->content)->selected ^= 1;
+		if (info->strings->cur->content == selected_node->content)
+			draw_cursor_string(info, selected_node->content);
 		else
-			draw_string(info, selected_string);
+			draw_string(info, selected_node->content);
 	}
 	return (1);
 }
