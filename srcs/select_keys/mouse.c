@@ -6,7 +6,7 @@
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/24 06:00:31 by alan              #+#    #+#             */
-/*   Updated: 2019/12/03 11:10:34 by abarnett         ###   ########.fr       */
+/*   Updated: 2019/12/07 19:04:30 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,22 +39,6 @@ static struct s_dnode	*get_node_at_coord(struct s_select *info, int x, int y)
 		--goal;
 	}
 	return (cursor);
-}
-
-static void				delete_non_cursor(struct s_select *info,
-							struct s_dnode *rm)
-{
-	struct s_iter	*iter;
-	struct s_dnode	*cursor;
-
-	iter = info->strings;
-	cursor = iter->cur;
-	iter->cur = rm;
-	ft_iter_rm_cur(iter);
-	iter->cur = cursor;
-	ft_tc_put(TC_CLEAR);
-	update_grid_pos(info);
-	draw_screen(info);
 }
 
 int						ft_select_mouse_leftclick(struct s_select *info)
@@ -106,10 +90,7 @@ int						ft_select_mouse_rightclick(struct s_select *info)
 	if (selected_node && (overhang <
 				((struct s_select_string *)selected_node->content)->str_len))
 	{
-		if (info->strings->cur == selected_node)
-			ft_select_delete(info);
-		else
-			delete_non_cursor(info, selected_node);
+		select_delete_node(info, selected_node);
 	}
 	return (1);
 }
