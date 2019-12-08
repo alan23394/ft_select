@@ -6,7 +6,7 @@
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 06:50:24 by alan              #+#    #+#             */
-/*   Updated: 2019/12/07 19:16:56 by alan             ###   ########.fr       */
+/*   Updated: 2019/12/07 19:18:23 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ struct s_select;
 struct s_dnode;
 
 int	ft_select_complete(struct s_select *info);
-int	ft_select_quit(struct s_select *info);
 
 int	ft_select_mouse_leftclick(struct s_select *info);
 int	ft_select_mouse_rightclick(struct s_select *info);

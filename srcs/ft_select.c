@@ -6,7 +6,7 @@
 /*   By: abarnett <alanbarnett328@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/27 08:28:17 by abarnett          #+#    #+#             */
-/*   Updated: 2019/12/07 19:18:03 by alan             ###   ########.fr       */
+/*   Updated: 2019/12/07 19:18:28 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ static void				ft_select_loop(struct s_select *info)
 	uint32_t		input;
 	int				ret;
 
-	if (!info)
-		return ;
 	while (42)
 	{
 		input = 0;
@@ -37,12 +35,12 @@ static void				ft_select_loop(struct s_select *info)
 		if (!handle_signal(info))
 			break ;
 		ret = read(STDIN_FILENO, &input, 4);
-		if (info->sel_columns == 0)
-		{
-			continue ;
-		}
 		if (ret && input)
 		{
+			if (input == 'q' || input == '\033')
+				break;
+			if (info->sel_columns == 0)
+				continue ;
 			if (input >= 128)
 				ret = handle_fourbyte_input(input, info);
 			else

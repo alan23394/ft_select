@@ -6,7 +6,7 @@
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 08:20:20 by alan              #+#    #+#             */
-/*   Updated: 2019/12/07 19:17:22 by alan             ###   ########.fr       */
+/*   Updated: 2019/12/07 19:18:33 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ int	handle_onebyte_input(uint32_t input, struct s_select *info)
 		['i'] = ft_select_invert,
 		[' '] = ft_select_select,
 		['\n'] = ft_select_complete,
-		['q'] = ft_select_quit,
-		['\033'] = ft_select_quit,
 	};
 
 	if (!info || ft_iter_isempty(info->strings))
