@@ -37,6 +37,10 @@ static void				ft_select_loop(struct s_select *info)
 		if (!handle_signal(info))
 			break ;
 		ret = read(STDIN_FILENO, &input, 4);
+		if (info->sel_columns == 0)
+		{
+			continue ;
+		}
 		if (ret && input)
 		{
 			if (input >= 128)

@@ -6,7 +6,7 @@
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 17:26:31 by alan              #+#    #+#             */
-/*   Updated: 2019/11/19 03:28:39 by alan             ###   ########.fr       */
+/*   Updated: 2019/12/07 16:19:47 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ struct s_iter	*make_select_iter(int str_amnt, char **str_array,
 ** for the strings. I would like to give the strings an index instead of a grid
 ** position, which would make this step unnecessary (all I'd have to do is
 ** correct the indexes when deleting/inserting an item from the strings).
+** If the strings won't fit on the screen, the columns will be set to 0. Look
+** for this to draw an empty screen.
 */
 
 void			calibrate_screen(struct s_select *info)

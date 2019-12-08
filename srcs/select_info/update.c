@@ -6,7 +6,7 @@
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 17:24:45 by alan              #+#    #+#             */
-/*   Updated: 2019/12/01 13:20:12 by alan             ###   ########.fr       */
+/*   Updated: 2019/12/07 16:19:13 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ void	update_grid_pos(struct s_select *info)
 	unsigned int	col;
 	struct s_dnode	*node;
 
+	if (info->sel_columns == 0)
+		return ;
 	line = 0;
 	col = 0;
 	node = info->strings->head;
@@ -79,6 +81,9 @@ void	update_grid_pos(struct s_select *info)
 		++col;
 		node = node->next;
 	}
+	if (((struct s_select_string *)info->strings->tail->content)->pos.y >=
+			info->term_size.y)
+		info->sel_columns = 0;
 }
 
 /*

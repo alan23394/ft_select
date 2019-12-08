@@ -97,6 +97,11 @@ void		draw_screen(struct s_select *info)
 	{
 		return ;
 	}
+	if (info->sel_columns == 0)
+	{
+		ft_printfd(STDIN_FILENO, "%s", "Your terminal is too small!");
+		return ;
+	}
 	dnode = info->strings->head;
 	while (dnode)
 	{
