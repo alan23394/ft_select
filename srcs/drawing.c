@@ -6,7 +6,7 @@
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 04:47:56 by alan              #+#    #+#             */
-/*   Updated: 2019/12/03 11:28:51 by abarnett         ###   ########.fr       */
+/*   Updated: 2019/12/07 19:24:39 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,10 @@ static void	move_to_gridpos(struct s_select *info,
 
 void		draw_string(struct s_select *info, struct s_select_string *string)
 {
-	const char	*color;
+	char	*color;
 
 	move_to_gridpos(info, string->pos.x, string->pos.y);
-	color = COLOR_NORMAL;
-	if (string->selected)
-	{
-		color = COLOR_SELECTED;
-	}
+	color = ((string->selected) ? COLOR_SELECTED : COLOR_NORMAL);
 	if (string->str_len > info->sel_column_width)
 	{
 		ft_printfd(STDIN_FILENO, "%s%.*s%.*s%s", color,
@@ -71,11 +67,7 @@ void		draw_cursor_string(struct s_select *info,
 	const char	*color;
 
 	move_to_gridpos(info, string->pos.x, string->pos.y);
-	color = COLOR_CURSOR;
-	if (string->selected)
-	{
-		color = COLOR_SELECTED_CURSOR;
-	}
+	color = ((string->selected) ? COLOR_SELECTED_CURSOR : COLOR_CURSOR);
 	if (string->str_len > info->sel_column_width)
 	{
 		ft_printfd(STDIN_FILENO, "%s%.*s%.*s%s", color,
