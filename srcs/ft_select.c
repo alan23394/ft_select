@@ -6,7 +6,7 @@
 /*   By: abarnett <alanbarnett328@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/27 08:28:17 by abarnett          #+#    #+#             */
-/*   Updated: 2019/12/07 19:18:28 by alan             ###   ########.fr       */
+/*   Updated: 2019/12/08 00:27:04 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void				ft_select_loop(struct s_select *info)
 	}
 }
 
-static enum e_err_code	select_restore(void)
+static enum e_err_code	select_restore(struct s_select *info)
 {
 	enum e_err_code	err;
 
@@ -60,6 +60,7 @@ static enum e_err_code	select_restore(void)
 		PRINT_DEBUG("Can't properly restore screen");
 	}
 	err = terminal_restore();
+	ft_iter_del(&(info->strings), ft_iter_memdel);
 	return (err);
 }
 
@@ -87,7 +88,7 @@ enum e_err_code			ft_select(const char **selected, int argc, char **argv)
 	draw_screen(&info);
 	ft_select_loop(&info);
 	*selected = info.output;
-	err = select_restore();
+	err = select_restore(&info);
 	restore_signal_handling();
 	return (err);
 }
