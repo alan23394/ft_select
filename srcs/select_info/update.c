@@ -6,7 +6,7 @@
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 17:24:45 by alan              #+#    #+#             */
-/*   Updated: 2019/12/07 16:19:13 by alan             ###   ########.fr       */
+/*   Updated: 2019/12/07 22:15:08 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	update_term_size(struct s_select *info)
 
 void	update_select_columns(struct s_select *info)
 {
-	if (info->term_size.x < SELECT_STRING_MIN_LEN)
+	if (ft_iter_isempty(info->strings) || info->term_size.x < SELECT_STRING_MIN_LEN)
 	{
 		info->sel_columns = 0;
 		return ;
