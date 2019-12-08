@@ -6,7 +6,7 @@
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 21:06:42 by alan              #+#    #+#             */
-/*   Updated: 2019/11/19 03:39:44 by alan             ###   ########.fr       */
+/*   Updated: 2019/12/08 03:23:54 by abarnett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 **
 ** select struct
 ** iterator list of strings
-** stack of deleted strings
 ** string for final output
 ** overall widest string
 ** number of string columns
@@ -30,10 +29,9 @@
 **	columns in terminal
 */
 
-struct s_select
+struct			s_select
 {
 	struct s_iter	*strings;
-//	struct s_stack	*deleted;
 	const char		*output;
 	unsigned int	str_maxlen;
 	unsigned int	sel_columns;

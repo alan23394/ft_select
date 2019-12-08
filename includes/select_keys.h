@@ -6,14 +6,14 @@
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 06:50:24 by alan              #+#    #+#             */
-/*   Updated: 2019/12/07 19:18:23 by alan             ###   ########.fr       */
+/*   Updated: 2019/12/08 03:27:11 by abarnett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SELECT_KEYS_H
 # define SELECT_KEYS_H
 
-#include "stdint.h"
+# include "stdint.h"
 
 # define KEY_CTRL_A 1
 # define KEY_CTRL_B 2

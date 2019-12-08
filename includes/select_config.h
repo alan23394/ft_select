@@ -6,7 +6,7 @@
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 17:14:05 by alan              #+#    #+#             */
-/*   Updated: 2019/11/25 23:15:47 by alan             ###   ########.fr       */
+/*   Updated: 2019/12/08 03:33:56 by abarnett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@
 ** printed).
 */
 
-#define SELECT_TRIM_STR "..."
-#define SELECT_TRIM_STRLEN 3
+# define SELECT_TRIM_STR "..."
+# define SELECT_TRIM_STRLEN 3
 
 /*
 ** This is the minimum length of a string, with the trimming string included.

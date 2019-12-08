@@ -6,7 +6,7 @@
 /*   By: abarnett <alanbarnett328@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/27 08:28:17 by abarnett          #+#    #+#             */
-/*   Updated: 2019/12/08 00:27:04 by alan             ###   ########.fr       */
+/*   Updated: 2019/12/08 03:32:30 by abarnett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void				ft_select_loop(struct s_select *info)
 		if (ret && input)
 		{
 			if (input == 'q' || input == '\033')
-				break;
+				break ;
 			if (info->sel_columns == 0)
 				continue ;
 			if (input >= 128)

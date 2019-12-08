@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   terminal.h                                         :+:      :+:    :+:   */
+/*   select_terminal.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abarnett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/27 08:17:05 by abarnett          #+#    #+#             */
-/*   Updated: 2019/11/16 07:07:12 by alan             ###   ########.fr       */
+/*   Updated: 2019/12/08 03:27:49 by abarnett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TERMINAL_H
-# define TERMINAL_H
+#ifndef SELECT_TERMINAL_H
+# define SELECT_TERMINAL_H
 
 # include "error.h"
 # include <termios.h>
