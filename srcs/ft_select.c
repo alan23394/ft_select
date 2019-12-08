@@ -6,12 +6,12 @@
 /*   By: abarnett <alanbarnett328@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/27 08:28:17 by abarnett          #+#    #+#             */
-/*   Updated: 2019/12/07 19:01:25 by alan             ###   ########.fr       */
+/*   Updated: 2019/12/07 19:18:03 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_select.h"
 #include "select_terminal.h"
+#include "select_screen.h"
 #include "select_info.h"
 #include "select_signals.h"
 #include "select_keys.h"

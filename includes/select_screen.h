@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_select.h                                        :+:      :+:    :+:   */
+/*   select_screen.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarnett <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/27 08:09:56 by abarnett          #+#    #+#             */
-/*   Updated: 2019/12/07 13:36:03 by alan             ###   ########.fr       */
+/*   Created: 2019/12/07 13:35:04 by alan              #+#    #+#             */
+/*   Updated: 2019/12/07 13:37:13 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SELECT_H
-# define FT_SELECT_H
+#ifndef SELECT_SCREEN_H
+# define SELECT_SCREEN_H
 
-# include "error.h"
-
-enum e_err_code	ft_select(const char **selected, int num_args, char **args);
+int	setup_screen(void);
+int	restore_screen(void);
 
 #endif
