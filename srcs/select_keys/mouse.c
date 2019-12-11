@@ -6,7 +6,7 @@
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/24 06:00:31 by alan              #+#    #+#             */
-/*   Updated: 2019/12/07 19:04:30 by alan             ###   ########.fr       */
+/*   Updated: 2019/12/10 21:31:57 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,22 @@
 
 static struct s_dnode	*get_node_at_coord(struct s_select *info, int x, int y)
 {
-	int				last_line;
-	int				last_col;
-	int				goal;
+	int				desired_index;
+	int				last_index;
 	struct s_dnode	*cursor;
 
-	last_line = ((struct s_select_string *)info->strings->tail->content)->pos.y;
-	last_col = info->sel_columns - 1;
-	if (y > last_line || x > last_col)
+	desired_index = ((y * info->sel_columns) + x);
+	last_index = \
+			((((struct s_select_string *)info->strings->tail->content)->pos.y *
+			info->sel_columns)
+			+ ((struct s_select_string *)info->strings->tail->content)->pos.x);
+	if (desired_index > last_index)
 		return (0);
-	goal = (y * info->sel_columns) + x;
 	cursor = info->strings->head;
-	while (goal)
+	while (cursor && desired_index)
 	{
 		cursor = cursor->next;
-		--goal;
+		--desired_index;
 	}
 	return (cursor);
 }
