@@ -6,7 +6,7 @@
 /*   By: alan <alanbarnett328@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 19:42:04 by alan              #+#    #+#             */
-/*   Updated: 2019/12/07 13:33:42 by alan             ###   ########.fr       */
+/*   Updated: 2019/12/11 13:05:36 by alan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	pause_select(struct s_select *info)
 	restore_screen();
 	ft_term_switch_old();
 	signal(SIGTSTP, SIG_DFL);
-	ioctl(STDIN_FILENO, TIOCSTI, "\x1a");
+	kill(getpid(), SIGTSTP);
 	signal(SIGTSTP, signal_catch);
 	ft_term_switch_new();
 	setup_screen();
